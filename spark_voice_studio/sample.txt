@@ -1,0 +1,9 @@
+# Sample text for step 6. Each blank-line-separated paragraph becomes one clip.
+
+Welcome back. In this module we look at how a model-based approach changes the way a program manages its requirements, and why the first week of any MBSE effort is spent on the things nobody wrote down.
+
+The DGX Spark has one hundred twenty-eight gigabytes of unified memory, which means the model, the speech recognizer, and the language model that writes the script can all stay loaded at once.
+
+Please do not utilize that word; use it instead. Twelve thousand four hundred and six parts were counted before lunch, and the count was right.
+
+That is the whole trick: record the way you teach, and the clone will teach the way you record.

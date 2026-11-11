@@ -1,0 +1,3 @@
+Welcome to the course. In this module we cover the basics of the method and why it matters.
+
+The second paragraph shows how the pieces fit together, one step at a time.

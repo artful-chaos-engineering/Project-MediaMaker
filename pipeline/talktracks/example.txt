@@ -1,0 +1,13 @@
+# Example talktrack. Lines starting with # are notes and are never spoken.
+# Lines starting with @ are settings for this run; everything else is speech.
+# Each blank-line-separated paragraph becomes one spoken clip (and one caption).
+@name: example
+@language: English
+@pause: 0.6
+@background: keep
+
+Welcome to the course. In this module we cover the basics of the method and why it matters.
+
+Systems that are designed with a model first tend to stay consistent as they grow, because every view comes from the same source.
+
+Let's begin with a simple example.

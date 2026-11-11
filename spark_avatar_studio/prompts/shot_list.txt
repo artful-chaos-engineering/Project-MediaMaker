@@ -1,0 +1,6 @@
+# One shot per line: key | instruction shown on screen. The first shot is the one used when you only supply photos.
+front_neutral | Look straight into the lens, mouth gently closed, relaxed face, shoulders square.
+slight_smile | Same pose, a small closed-mouth smile.
+mouth_open | Same pose, say a soft "ahh" - mouth open about a finger's width. Hold still.
+turn_left | Turn your head about 10 degrees to your left, eyes still on the lens.
+turn_right | Turn your head about 10 degrees to your right, eyes still on the lens.

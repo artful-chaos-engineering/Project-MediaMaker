@@ -1,0 +1,64 @@
+# Spark Avatar Studio configuration. Edit the lines under spark: and owner: first.
+spark:
+  host: 10.111.1.151          # DGX Spark hostname or IP; "local" when running on the Spark itself
+  user: mvriesenga
+  ssh_key: ~/.ssh/id_ed25519
+  remote_home: /home/mvriesenga/avatar-studio   # where the studio lives on the Spark
+
+owner: "Mark Vriesenga"      # the one face this studio animates; scripts refuse other subjects
+
+avatar:
+  name: mark                 # folder name under avatars/
+
+models:
+  latentsync_repo: ByteDance/LatentSync-1.6      # lip-sync checkpoints (Apache 2.0 code)
+  latentsync_git: https://github.com/bytedance/LatentSync.git
+  vae: stabilityai/sd-vae-ft-mse                 # LatentSync downloads this at first run; step 2 pre-fetches it
+  matting: ZhengPeng7/BiRefNet                   # background removal (MIT); BiRefNet-portrait is a person-tuned variant
+  latentsync_dir: /home/mvriesenga/avatar-studio/LatentSync
+
+render:
+  steps: 25                  # LatentSync inference steps (20 is the project default; 25 cleaner; 15 for drafts)
+  guidance: 1.5              # lip-sync strength; 2.0 = sharper mouth, slightly more artifacts
+  seed: 1247
+  fps: 25
+  max_chunk_seconds: 45      # long audio is cut at silences into chunks of at most this length
+  audio_offset: 0.0          # seconds; + delays the audio. Step 9 can sweep this.
+
+background:                  # used by step 7 --background and step 8
+  mode: keep                 # keep | transparent | color | gradient | image | video | blur
+  engine: birefnet           # birefnet (AI matte) | chroma (green/blue screen key)
+  color: "#0B1F3A"           # for color; also the first colour of gradient
+  color2: "#1D6FA5"          # second colour of gradient
+  image: null                # path to a still (mode image)
+  video: null                # path to a looping clip (mode video)
+  chroma_key: "#00B140"      # screen colour for engine chroma
+  matte_size: 1024           # BiRefNet input size; 768 or 512 is faster
+  alpha_smooth: 0.5          # 0 = none; 0.5 steadies flicker between frames
+  choke: 0.08                # pulls the matte edge in a little to avoid halos of the old background
+  feather: 2                 # edge blur in pixels
+
+voice:                       # the Spark Voice Studio model server that speaks the text (port must match server.port there)
+  port: 8040
+  url: null                  # set to http://spark.local:8040 if the voice studio runs elsewhere
+
+capture:
+  camera: 0                  # OpenCV camera index on the Mac
+  video_seconds: 40          # length of the idle/reference take
+  fps: 25
+
+metrics:                     # objective checks in step 9 (--metrics)
+  syncnet_cmd: "python eval/eval_sync_conf.py --video_dir {dir}"   # run inside the LatentSync folder on the Spark; {dir} holds the video
+  syncnet_weights: checkpoints/auxiliary/syncnet_v2.model          # relative to the LatentSync folder; checked before running
+
+lora:                        # step 10: face LoRA for the InfiniteTalk renderer (see step10_train_face_lora.py)
+  name: face
+  width: 960                 # training frame size (16:9 at about 720p); photos are cropped to the same size
+  height: 544
+  rank: 32                   # LoRA size; 32 is a good start, 64 for more detail with plenty of footage
+  alpha: 32
+  lr: 0.0002
+  epochs: 20                 # one epoch is one pass over every clip and photo
+  save_every: 2
+  block_swap: 0              # set 20-30 if training runs out of memory
+  caption: "A person talks naturally to the camera, plain background, soft even light."

@@ -1,0 +1,14 @@
+{
+  "connected": true,
+  "gpu_ok": true,
+  "updated": "2026-11-05T13:09:40",
+  "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+  "asr_model": "openai/whisper-large-v3-turbo",
+  "models_downloaded": true,
+  "captured": true,
+  "utterances": 260,
+  "last_checkpoint": "checkpoints/run_20261105_1050/checkpoint-epoch-2",
+  "last_run": "run_20261105_1050",
+  "model_loaded": "models/Qwen__Qwen3-TTS-12Hz-1.7B-Base",
+  "model_mode": "clone"
+}

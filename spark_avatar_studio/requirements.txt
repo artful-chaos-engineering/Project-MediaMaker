@@ -1,0 +1,8 @@
+pyyaml
+paramiko
+numpy
+requests
+soundfile
+opencv-python<5
+nbformat
+ipython

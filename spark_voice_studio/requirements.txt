@@ -1,0 +1,11 @@
+# Mac side (menu, capture, playback, notebook)
+pyyaml
+paramiko
+sounddevice
+soundfile
+numpy
+requests
+nbformat
+ipython
+# Spark side (installed by step1_connect_spark.py into the remote venv)
+#   torch torchaudio (cu130 index), qwen-tts, transformers, accelerate, soundfile, librosa, fastapi, uvicorn, huggingface_hub

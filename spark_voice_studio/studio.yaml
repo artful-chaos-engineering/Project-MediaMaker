@@ -1,0 +1,28 @@
+# Spark Voice Studio configuration. Edit the three lines under spark: first.
+spark:
+  host: 10.111.1.151         # DGX Spark hostname or IP; "local" when running on the Spark itself
+  user: mvriesenga
+  ssh_key: ~/.ssh/id_ed25519
+  remote_home: /home/mvriesenga/voice-studio   # where the studio lives on the Spark
+
+owner: "Mark Vriesenga"      # the one voice this studio clones; scripts refuse other speakers
+
+models:
+  tts: Qwen/Qwen3-TTS-12Hz-1.7B-Base     # or Qwen/Qwen3-TTS-12Hz-0.6B-Base (faster, less similar)
+  tokenizer: Qwen/Qwen3-TTS-Tokenizer-12Hz
+  asr: openai/whisper-large-v3-turbo
+  speaker_name: mark          # name the fine-tuned CustomVoice model answers to
+
+server:
+  port: 8040                  # model server on the Spark
+
+capture:
+  sample_rate: 24000
+  takes: 40                   # sentences to read in a capture session
+  device: null                # sounddevice input index; null = default microphone
+
+training:
+  epochs: 3
+  batch_size: 2
+  lr: 2.0e-5
+  qwen_repo: /home/mvriesenga/voice-studio/Qwen3-TTS   # clone of QwenLM/Qwen3-TTS (finetuning/ scripts)

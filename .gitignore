@@ -1,0 +1,61 @@
+# Secrets
+.env
+.env.*
+!.env.example
+config/keys.env
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+
+# Logs and temp
+logs/
+*.log
+tmp/
+.cache/
+
+# Media outputs
+outputs/
+*.mp4
+*.mov
+*.wav
+*.mp3
+
+# Tooling
+graft/
+.vibe-factory/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Personal biometric data and model weights
+*.safetensors
+*.png
+*.jpg
+*.m4a
+*.pdf
+._*
+spark_*/data/
+spark_*/photo/
+spark_*/avatars/
+spark_*/lora/
+spark_*/input/
+spark_*/out/
+spark_*/training-data/
+pipeline/output/
